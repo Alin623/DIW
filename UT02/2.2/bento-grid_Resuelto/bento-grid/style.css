@@ -1,0 +1,336 @@
+/* ---------- Fuentes (DM Sans, en local) ---------- */
+@font-face {
+  font-family: "DM Sans";
+  src: url("assets/fonts/DMSans-Regular.ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "DM Sans";
+  src: url("assets/fonts/DMSans-Medium.ttf");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "DM Sans";
+  src: url("assets/fonts/DMSans-MediumItalic.ttf");
+  font-weight: 500;
+  font-style: italic;
+}
+
+/* ---------- Variables (style-guide.md) ---------- */
+:root {
+  --purple-100: hsl(254, 88%, 90%);
+  --purple-500: hsl(256, 67%, 59%);
+  --yellow-100: hsl(31, 66%, 93%);
+  --yellow-500: hsl(39, 100%, 71%);
+  --white: hsl(0, 0%, 100%);
+  --black: hsl(0, 0%, 7%);
+  --background: hsl(0, 0%, 96%);
+
+  /* Tamaños de los títulos: móvil */
+  --title-xl: 48px;
+  --title-lg: 32px;
+  --title-md: 26px;
+}
+
+/* ---------- Base ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  padding: 32px 16px 40px;
+  background-color: var(--background);
+  color: var(--black);
+  font-family: "DM Sans", sans-serif;
+  font-size: 18px;
+}
+
+img {
+  display: block;
+}
+
+h1,
+h2 {
+  font-weight: 500;
+  line-height: 0.9;
+  letter-spacing: -0.06em;
+}
+
+p {
+  line-height: 1.1;
+}
+
+em {
+  font-style: italic;
+}
+
+/* ---------- Rejilla: en móvil, una sola columna ---------- */
+.bento {
+  display: grid;
+  gap: 32px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.card {
+  overflow: hidden;
+  padding: 16px;
+  border-radius: 10px;
+}
+
+/* ---------- Tarjetas ---------- */
+.social {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 40px 42px;
+  background-color: var(--purple-500);
+  color: var(--white);
+  text-align: center;
+}
+
+.social h1 {
+  font-size: var(--title-xl);
+}
+
+.social span {
+  color: var(--yellow-500);
+}
+
+.social img {
+  width: 192px;
+  margin: 20px 0 8px;
+}
+
+.manage {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background-color: var(--white);
+}
+
+.manage img {
+  width: 316px;
+}
+
+.manage h2 {
+  margin-top: auto;
+  font-size: var(--title-md);
+}
+
+.maintain {
+  height: 218px;
+  background-color: var(--yellow-500);
+}
+
+.maintain h2 {
+  font-size: var(--title-md);
+}
+
+.maintain img {
+  width: 208px;
+  margin-top: 16px;
+}
+
+.schedule {
+  padding: 32px 16px 29px;
+  background-color: var(--purple-100);
+  text-align: center;
+}
+
+.schedule h2 {
+  font-size: var(--title-md);
+}
+
+.schedule img {
+  width: 100%;
+  margin: 24px 0;
+}
+
+.schedule p {
+  padding: 0 16px;
+}
+
+.grow {
+  padding: 22px 16px;
+  background-color: var(--purple-500);
+  color: var(--white);
+  text-align: center;
+}
+
+.grow img {
+  width: 228px;
+  margin: 0 auto 43px;
+}
+
+.grow h2 {
+  max-width: 230px;
+  margin: 0 auto;
+  font-size: var(--title-lg);
+  line-height: 0.875;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  background-color: var(--white);
+}
+
+.stat .number {
+  font-size: var(--title-xl);
+  font-weight: 500;
+  line-height: 0.875;
+  letter-spacing: -0.06em;
+}
+
+.stat p:not(.number) {
+  margin-top: 16px;
+}
+
+.stat img {
+  width: 179px;
+  margin-top: auto;
+  padding-top: 22px;
+}
+
+.create {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 32px;
+  background-color: var(--yellow-100);
+}
+
+.create h2 {
+  font-size: var(--title-lg);
+}
+
+.create em {
+  color: var(--purple-500);
+}
+
+.create img {
+  width: 191px;
+  margin-top: 20px;
+}
+
+.write {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  background-color: var(--yellow-500);
+}
+
+.write h2 {
+  font-size: var(--title-lg);
+}
+
+.write img {
+  width: 220px;
+  margin-top: auto;
+  padding-top: 20px;
+}
+
+.attribution {
+  margin-top: 24px;
+}
+
+/* ---------- Escritorio: rejilla de 4 columnas con áreas ---------- */
+@media (min-width: 1200px) {
+  :root {
+    --title-xl: 64px;
+    --title-lg: 36px;
+    --title-md: 32px;
+  }
+
+  body {
+    padding: 83px 0 65px;
+  }
+
+  h2 {
+    line-height: 0.875;
+  }
+
+  .create h2,
+  .write h2 {
+    line-height: 1;
+    letter-spacing: -0.05em;
+  }
+
+  .manage {
+    padding: 24px;
+  }
+
+  .maintain {
+    height: auto;
+    padding: 24px;
+  }
+
+  .stat p:not(.number) {
+    margin-top: 18px;
+  }
+
+  .create img {
+    margin-top: 24px;
+  }
+
+  .bento {
+    max-width: 1120px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 324px 59px 156px 246px;
+    grid-template-areas:
+      "create social social schedule"
+      "create manage maintain schedule"
+      "write  manage maintain schedule"
+      "write  stat   grow     grow";
+  }
+
+  .schedule {
+    padding: 48px 32px 32px;
+    text-align: left;
+  }
+
+  .schedule img {
+    width: 358px;
+  }
+
+  .schedule p {
+    padding: 0;
+  }
+
+  .grow {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 24px 16px 24px 24px;
+    text-align: left;
+  }
+
+  .grow img {
+    flex-shrink: 0;
+    margin: 0;
+  }
+
+  .grow h2 {
+    max-width: none;
+    margin: 8px 0 0;
+    font-size: 40px;
+  }
+
+  .social   { grid-area: social; }
+  .manage   { grid-area: manage; }
+  .maintain { grid-area: maintain; }
+  .schedule { grid-area: schedule; }
+  .grow     { grid-area: grow; }
+  .stat     { grid-area: stat; }
+  .create   { grid-area: create; }
+  .write    { grid-area: write; }
+}

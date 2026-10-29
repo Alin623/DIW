@@ -1,0 +1,28 @@
+body {
+  margin: 0;
+}
+
+header {
+  background-color: #333;
+  color: white;
+  padding: 30px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 48px;
+  font-weight: normal;
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  background-color: #ccc;
+}
+
+nav a {
+  padding: 15px;
+  color: #333;
+  text-decoration: none;
+  border: 1px solid #ddd;
+}
