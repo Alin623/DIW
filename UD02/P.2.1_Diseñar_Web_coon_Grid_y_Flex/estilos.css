@@ -1,0 +1,475 @@
+:root {
+    --fondo-pagina: var(--color-fondo);
+    --fondo-superficie: var(--color-superficie);
+    --fondo-hero: var(--color-tinta);
+    --fondo-destacado: var(--color-tinta);
+    --texto-principal: var(--color-tinta);
+    --texto-secundario: var(--color-tinta-suave);
+    --texto-inverso: var(--color-superficie);
+    --texto-acento: var(--color-sol);
+    --accion-principal: var(--color-sol);
+    --accion-principal-hover: var(--color-tinta);
+    --accion-secundaria: var(--color-ola);
+    --accion-secundaria-hover: var(--color-tinta);
+    --accion-oscura: var(--color-tinta);
+    --accion-oscura-hover: var(--color-tinta-suave);
+    --accion-contorno: transparent;
+    --accion-contorno-hover: var(--color-superficie);
+    --borde-principal: var(--color-borde);
+    --borde-destacado: var(--color-sol);
+    --fondo-visual-playa: var(--color-ola);
+    --fondo-visual-pinar: var(--color-sol);
+    --fondo-imagen-1: var(--color-ola);
+    --fondo-imagen-2: var(--color-sol);
+    --fondo-imagen-3: var(--color-coral);
+    --fondo-imagen-4: var(--color-tinta-suave);
+    --ancho-texto-hero: 40rem;
+    --alto-imagen-tarjeta: 11.25rem;
+    --alto-visual-bloque: 18.75rem;
+    --grosor-borde: 1px;
+    --ancho-foco: 3px;
+    --separacion-foco: 2px;
+}
+
+/* Flex en el documento para que main crezca y el pie llegue al final,
+   incluso cuando main no tenga contenido. */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    color: var(--texto-principal);
+    background-color: var(--fondo-pagina);
+}
+
+main {
+    flex: 1;
+}
+
+.contenedor {
+    width: 100%;
+    max-width: var(--ancho-contenedor);
+    margin: 0 auto;
+    padding: 0 var(--espacio-3);
+}
+
+.seccion__titulo {
+    margin-bottom: var(--espacio-5);
+    font-size: var(--texto-2xl);
+}
+
+/* Las variantes comparten una base; cada una conserva su color semántico. */
+.boton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--espacio-2) var(--espacio-4);
+    border: var(--grosor-borde) solid transparent;
+    border-radius: var(--radio-pildora);
+    font-size: var(--texto-s);
+    font-weight: var(--peso-fuerte);
+    text-align: center;
+    transition: background-color var(--transicion), color var(--transicion),
+        border-color var(--transicion);
+}
+
+.boton--sol {
+    color: var(--texto-principal);
+    background-color: var(--accion-principal);
+}
+
+.boton--sol:hover {
+    color: var(--texto-inverso);
+    background-color: var(--accion-principal-hover);
+}
+
+.boton--oscuro {
+    color: var(--texto-inverso);
+    background-color: var(--accion-oscura);
+}
+
+.boton--oscuro:hover {
+    background-color: var(--accion-oscura-hover);
+}
+
+.boton--ola {
+    color: var(--texto-inverso);
+    background-color: var(--accion-secundaria);
+}
+
+.boton--ola:hover {
+    background-color: var(--accion-secundaria-hover);
+}
+
+.boton--borde {
+    color: var(--texto-inverso);
+    background-color: var(--accion-contorno);
+    border-color: var(--texto-inverso);
+}
+
+.boton--borde:hover {
+    color: var(--texto-principal);
+    background-color: var(--accion-contorno-hover);
+}
+
+a:focus-visible {
+    outline: var(--ancho-foco) solid var(--accion-secundaria);
+    outline-offset: var(--separacion-foco);
+}
+
+/* 1. Cabecera: flex crea la fila; el menú flexible centra sus enlaces
+   en el espacio entre la marca y la acción. Sticky solo se usa aquí. */
+.cabecera {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    min-height: var(--alto-cabecera);
+    background-color: var(--fondo-superficie);
+}
+
+.cabecera__interior {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--espacio-4);
+    min-height: var(--alto-cabecera);
+}
+
+.logo {
+    font-size: var(--texto-xl);
+    font-weight: var(--peso-fuerte);
+}
+
+.menu {
+    flex: 1;
+}
+
+.menu__lista {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: var(--espacio-6);
+}
+
+.menu__enlace {
+    color: var(--texto-principal);
+    font-weight: var(--peso-fuerte);
+}
+
+.menu__enlace:hover {
+    color: var(--accion-secundaria);
+}
+
+/* 2. Hero: flex en columna permite centrar el contenido en ambos ejes. */
+.hero {
+    color: var(--texto-inverso);
+    background-color: var(--fondo-hero);
+}
+
+.hero__interior {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--espacio-4);
+    padding-top: var(--espacio-7);
+    padding-bottom: var(--espacio-7);
+    text-align: center;
+}
+
+.hero__titulo {
+    font-size: var(--texto-3xl);
+    font-weight: var(--peso-negro);
+}
+
+.hero__texto {
+    max-width: var(--ancho-texto-hero);
+    font-size: var(--texto-l);
+}
+
+.hero__acciones {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--espacio-3);
+}
+
+/* 3. Datos clave: grid expresa las tres columnas iguales;
+   cada dato usa flex para apilar valor y etiqueta. */
+.datos {
+    padding: var(--espacio-5) 0;
+    background-color: var(--fondo-superficie);
+}
+
+.datos__lista {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--espacio-4);
+}
+
+.dato {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.dato__valor {
+    font-family: var(--fuente-titulo);
+    font-size: var(--texto-xl);
+    font-weight: var(--peso-negro);
+}
+
+.dato__etiqueta {
+    color: var(--texto-secundario);
+    font-size: var(--texto-s);
+}
+
+/* 4. Cartel: grid organiza tres columnas y filas de altura compartida.
+   Flex en cada tarjeta empuja su botón al final del cuerpo. */
+.cartel {
+    padding: var(--espacio-6) 0;
+}
+
+.cartel__rejilla {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--espacio-4);
+}
+
+.tarjeta {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: var(--grosor-borde) solid var(--borde-principal);
+    border-radius: var(--radio-m);
+    background-color: var(--fondo-superficie);
+    transition: border-color var(--transicion), box-shadow var(--transicion);
+}
+
+.tarjeta:hover {
+    border-color: var(--accion-secundaria);
+    box-shadow: var(--sombra-suave);
+}
+
+.tarjeta__imagen {
+    flex: 0 0 var(--alto-imagen-tarjeta);
+}
+
+.tarjeta:nth-child(6n + 1) .tarjeta__imagen {
+    background-color: var(--fondo-imagen-1);
+}
+
+.tarjeta:nth-child(6n + 2) .tarjeta__imagen {
+    background-color: var(--fondo-imagen-2);
+}
+
+.tarjeta:nth-child(6n + 3) .tarjeta__imagen {
+    background-color: var(--fondo-imagen-3);
+}
+
+.tarjeta:nth-child(6n + 4) .tarjeta__imagen {
+    background-color: var(--fondo-imagen-4);
+}
+
+.tarjeta:nth-child(6n + 5) .tarjeta__imagen {
+    background-color: var(--fondo-imagen-1);
+}
+
+.tarjeta:nth-child(6n) .tarjeta__imagen {
+    background-color: var(--fondo-imagen-2);
+}
+
+.tarjeta__cuerpo {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: var(--espacio-3);
+}
+
+.tarjeta__titulo {
+    font-size: var(--texto-l);
+    font-weight: var(--peso-fuerte);
+}
+
+.tarjeta__estilo {
+    margin-bottom: var(--espacio-2);
+    color: var(--accion-secundaria);
+    font-size: var(--texto-s);
+    font-weight: var(--peso-fuerte);
+}
+
+.tarjeta__texto {
+    margin-bottom: var(--espacio-3);
+    color: var(--texto-secundario);
+    font-size: var(--texto-s);
+}
+
+.tarjeta__boton {
+    margin-top: auto;
+}
+
+/* 5. Escenarios: grid pone texto y visual en dos columnas.
+   order intercambia sus posiciones en el bloque inverso sin cambiar HTML. */
+.escenarios {
+    padding: var(--espacio-6) 0;
+}
+
+.bloque {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: center;
+    gap: var(--espacio-6);
+    margin-bottom: var(--espacio-6);
+}
+
+.bloque__texto {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: var(--espacio-3);
+}
+
+.bloque__titulo {
+    font-size: var(--texto-xl);
+}
+
+.bloque__visual {
+    height: var(--alto-visual-bloque);
+    border-radius: var(--radio-m);
+}
+
+.bloque__visual--playa {
+    background-color: var(--fondo-visual-playa);
+}
+
+.bloque__visual--pinar {
+    background-color: var(--fondo-visual-pinar);
+}
+
+.bloque--inverso .bloque__visual {
+    order: -1;
+}
+
+/* 6. Entradas: grid iguala la altura de los planes.
+   Flex en columna y una lista flexible dejan sus botones alineados abajo. */
+.entradas {
+    padding: var(--espacio-6) 0;
+}
+
+.planes {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--espacio-4);
+}
+
+.plan {
+    display: flex;
+    flex-direction: column;
+    padding: var(--espacio-4);
+    border: var(--grosor-borde) solid var(--borde-principal);
+    border-radius: var(--radio-m);
+    background-color: var(--fondo-superficie);
+}
+
+.plan__etiqueta {
+    align-self: flex-start;
+    margin-bottom: var(--espacio-2);
+    padding: 0 var(--espacio-3);
+    border-radius: var(--radio-pildora);
+    color: var(--texto-principal);
+    background-color: var(--accion-principal);
+    font-size: var(--texto-xs);
+    font-weight: var(--peso-fuerte);
+}
+
+.plan__nombre {
+    font-size: var(--texto-l);
+}
+
+.plan__precio {
+    margin: var(--espacio-2) 0 var(--espacio-3);
+    font-family: var(--fuente-titulo);
+    font-size: var(--texto-2xl);
+    font-weight: var(--peso-negro);
+}
+
+.plan__lista {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: var(--espacio-1);
+    margin-bottom: var(--espacio-4);
+    color: var(--texto-secundario);
+    font-size: var(--texto-s);
+}
+
+.plan__lista li::before {
+    content: "• ";
+}
+
+.plan--destacado {
+    border-color: var(--borde-destacado);
+    color: var(--texto-inverso);
+    background-color: var(--fondo-destacado);
+}
+
+.plan--destacado .plan__precio {
+    color: var(--texto-acento);
+}
+
+.plan--destacado .plan__lista {
+    color: var(--texto-inverso);
+}
+
+/* 7. Pie: grid reserva el doble de espacio para la marca.
+   La barra legal usa flex para separar sus dos extremos. */
+.pie {
+    color: var(--texto-inverso);
+    background-color: var(--fondo-hero);
+}
+
+.pie__interior {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: var(--espacio-5);
+    padding-top: var(--espacio-6);
+    padding-bottom: var(--espacio-6);
+}
+
+.pie__columna--marca .logo {
+    color: var(--texto-inverso);
+}
+
+.pie__titulo {
+    margin-bottom: var(--espacio-2);
+    color: var(--texto-inverso);
+    font-size: var(--texto-m);
+}
+
+.pie__lista {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espacio-1);
+    font-size: var(--texto-s);
+}
+
+.pie__lista a:hover,
+.pie__legal a:hover {
+    color: var(--texto-acento);
+}
+
+.pie__legal {
+    border-top: var(--grosor-borde) solid var(--texto-secundario);
+    font-size: var(--texto-xs);
+}
+
+.pie__legal-interior {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--espacio-2);
+    padding-top: var(--espacio-3);
+    padding-bottom: var(--espacio-3);
+}
