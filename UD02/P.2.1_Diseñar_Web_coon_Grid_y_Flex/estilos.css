@@ -175,7 +175,7 @@ a:focus-visible {
 
 .logo {
     font-size: var(--texto-xl);
-    font-weight: var(--peso-negro);
+    font-weight: var(--peso-fuerte);
 }
 
 .menu {
@@ -505,7 +505,7 @@ a:focus-visible {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 1fr;
     gap: var(--espacio-5);
-    padding-block: var(--espacio-5);
+    padding-block: var(--espacio-5) var(--espacio-8);
 }
 
 .pie__columna--marca .logo {
@@ -538,7 +538,7 @@ a:focus-visible {
 .pie__legal-interior {
     display: flex;
     justify-content: space-between;
-    padding-block: var(--espacio-3);
+    padding-block: var(--espacio-4);
 }
 
 /* 
@@ -575,4 +575,3 @@ a:focus-visible {
      hasta ocupar toda la fila.
    Flex lo uso mejor DENTRO de cada pieza (tarjeta, plan, menú), donde hay
    una sola columna o una sola fila y el contenido decide el tamaño.
-   ========================================================= */
