@@ -1,0 +1,643 @@
+/* VARIABLES PROPIAS
+   variables.css solo trae colores "primitivos" (--color-sol, etc.).
+   Aquí creo las variables semánticas (fondo, texto, acción, borde) y
+   algunas medidas mías. Fuera de este bloque no uso las primitivas. */
+   
+:root {
+    /* fondos */
+    --fondo-pagina: var(--color-fondo);
+    --fondo-superficie: var(--color-superficie);
+    --fondo-hero: var(--color-tinta);
+    --fondo-destacado: var(--color-tinta);
+    --fondo-pie: var(--color-tinta);
+    --fondo-imagen-1: var(--color-ola);
+    --fondo-imagen-2: var(--color-sol);
+    --fondo-imagen-3: var(--color-coral);
+    --fondo-imagen-4: var(--color-tinta-suave);
+    --fondo-visual-playa: var(--color-ola);
+    --fondo-visual-pinar: var(--color-sol);
+
+    /* textos */
+    --texto-principal: var(--color-tinta);
+    --texto-secundario: var(--color-tinta-suave);
+    --texto-inverso: var(--color-superficie);
+    --texto-inverso-suave: var(--color-borde);
+    --texto-acento: var(--color-sol);
+
+    /* acciones (botones) y su color en :hover */
+    --accion-principal: var(--color-sol);
+    --accion-principal-hover: var(--color-ola);
+    --accion-secundaria: var(--color-ola);
+    --accion-secundaria-hover: var(--color-tinta);
+    --accion-oscura: var(--color-tinta);
+    --accion-oscura-hover: var(--color-tinta-suave);
+    --accion-contorno: transparent;
+    --accion-contorno-hover: var(--color-superficie);
+
+    /* bordes */
+    --borde-principal: var(--color-borde);
+    --borde-destacado: var(--color-sol);
+    --borde-contorno: var(--color-superficie);
+    --borde-pie: var(--color-tinta-suave);
+
+    /* medidas propias */
+    --alto-hero: 30rem;
+    --ancho-texto-hero: 36rem;
+    --alto-imagen-tarjeta: 11.25rem;
+    --alto-visual-bloque: 18.75rem;
+    --alto-etiqueta: 1.5rem;
+    --grosor-borde: 1px;
+    --ancho-foco: 3px;
+    --separacion-foco: 2px;
+}
+
+/* BASE */
+
+/* Al saltar a una sección con un enlace, la cabecera fija no tapa el título */
+html {
+    scroll-padding-top: var(--alto-cabecera);
+}
+
+/* BODY: flex en columna (sticky footer). main tiene flex:1, se queda
+   con todo el espacio libre y empuja el pie abajo aunque esté vacío. */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    color: var(--texto-principal);
+    background-color: var(--fondo-pagina);
+}
+
+main {
+    flex: 1;
+}
+
+/* CONTENEDOR: ancho máximo y centrado con margin auto.
+   No necesita ni flex ni grid. */
+.contenedor {
+    width: min(100% - 2 * var(--espacio-3), var(--ancho-contenedor));
+    margin: 0 auto;
+}
+
+.seccion__titulo {
+    margin-bottom: var(--espacio-5);
+    font-size: var(--texto-2xl);
+}
+
+/* BOTONES
+   FLEX dentro del propio botón: centra el texto en horizontal y vertical.
+   La base lleva lo común y cada variante solo cambia los colores. */
+.boton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--espacio-2) var(--espacio-4);
+    border: var(--grosor-borde) solid transparent;   /* así todos miden igual */
+    border-radius: var(--radio-pildora);
+    font-size: var(--texto-s);
+    font-weight: var(--peso-fuerte);
+    transition: background-color var(--transicion), color var(--transicion),
+        border-color var(--transicion);
+}
+
+.boton--sol {
+    color: var(--texto-principal);
+    background-color: var(--accion-principal);
+}
+
+.boton--sol:hover {
+    color: var(--texto-inverso);
+    background-color: var(--accion-principal-hover);
+}
+
+.boton--oscuro {
+    color: var(--texto-inverso);
+    background-color: var(--accion-oscura);
+}
+
+.boton--oscuro:hover {
+    background-color: var(--accion-oscura-hover);
+}
+
+.boton--ola {
+    color: var(--texto-inverso);
+    background-color: var(--accion-secundaria);
+}
+
+.boton--ola:hover {
+    background-color: var(--accion-secundaria-hover);
+}
+
+.boton--borde {
+    color: var(--texto-inverso);
+    background-color: var(--accion-contorno);
+    border-color: var(--borde-contorno);
+}
+
+.boton--borde:hover {
+    color: var(--texto-principal);
+    background-color: var(--accion-contorno-hover);
+}
+
+/* FOCO: todos los enlaces muestran un contorno al navegar con Tab.
+   Sobre fondo oscuro cambio el color para que se vea bien. */
+a:focus-visible {
+    outline: var(--ancho-foco) solid var(--accion-secundaria);
+    outline-offset: var(--separacion-foco);
+}
+
+.hero a:focus-visible,
+.plan--destacado a:focus-visible,
+.pie a:focus-visible {
+    outline-color: var(--accion-principal);
+}
+
+/* 1. CABECERA
+   FLEX: es una sola fila (logo | menú | botón), una dimensión.
+   .menu con flex:1 ocupa lo que sobra y su lista es otro flex.
+   El primer y el último <li> llevan margin-left:auto y se reparten el
+   espacio libre: los enlaces quedan en el centro y el botón a la derecha.
+   Sticky: la cabecera se queda visible al hacer scroll. */
+.cabecera {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: var(--fondo-superficie);
+}
+
+.cabecera__interior {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--espacio-4);
+    min-height: var(--alto-cabecera);
+}
+
+.logo {
+    font-size: var(--texto-xl);
+    font-weight: var(--peso-fuerte);
+}
+
+.menu {
+    flex: 1;
+}
+
+.menu__lista {
+    display: flex;
+    align-items: center;
+    gap: var(--espacio-6);
+}
+
+.menu__lista li:first-child,
+.menu__lista li:last-child {
+    margin-left: auto;
+}
+
+.menu__enlace {
+    color: var(--texto-principal);
+}
+
+.menu__enlace:hover {
+    color: var(--accion-secundaria);
+}
+
+/* 2. HERO
+   FLEX en columna: apila título, texto y botones y los centra.
+   Como la columna es el eje principal, justify-content centra en vertical
+   y align-items en horizontal. min-height da altura para que se note.
+   Los 2 botones van en otro flex, este en fila. */
+.hero {
+    color: var(--texto-inverso);
+    background-color: var(--fondo-hero);
+}
+
+.hero__interior {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--espacio-4);
+    min-height: var(--alto-hero);
+    padding-block: var(--espacio-5);
+    text-align: center;
+}
+
+.hero__titulo {
+    font-size: var(--texto-3xl);
+    font-weight: var(--peso-negro);
+}
+
+.hero__texto {
+    max-width: var(--ancho-texto-hero);
+    font-size: var(--texto-l);
+    color: var(--texto-inverso-suave);
+}
+
+.hero__acciones {
+    display: flex;
+    gap: var(--espacio-3);
+}
+
+/* 3. DATOS CLAVE 
+   GRID: tres columnas iguales que tienen que cuadrar entre sí.
+   Cada dato es un flex en columna para apilar valor y etiqueta centrados. */
+.datos {
+    padding-block: var(--espacio-5);
+    background-color: var(--fondo-superficie);
+}
+
+.datos__lista {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--espacio-4);
+}
+
+.dato {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.dato__valor {
+    font-family: var(--fuente-titulo);
+    font-size: var(--texto-xl);
+    font-weight: var(--peso-negro);
+}
+
+.dato__etiqueta {
+    font-size: var(--texto-s);
+    color: var(--texto-secundario);
+}
+
+/* 4. CARTEL 
+   GRID: rejilla de 3 columnas con huecos iguales. Las tarjetas de una fila
+   se igualan en altura solas. Si hay una 7ª tarjeta, se queda sola en la
+   última fila con el ancho de una columna: no se estira.
+   Dentro de cada tarjeta uso FLEX en columna: el cuerpo con flex:1 ocupa
+   el alto que sobra y el botón con margin-top:auto se queda siempre abajo. */
+.cartel {
+    padding-block: var(--espacio-6);
+}
+
+.cartel__rejilla {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--espacio-4);
+}
+
+.tarjeta {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;   /* el color de la imagen respeta las esquinas */
+    border: var(--grosor-borde) solid var(--borde-principal);
+    border-radius: var(--radio-m);
+    background-color: var(--fondo-superficie);
+    transition: border-color var(--transicion), box-shadow var(--transicion);
+}
+
+.tarjeta:hover {
+    border-color: var(--accion-secundaria);
+    box-shadow: var(--sombra-fuerte);
+}
+
+.tarjeta__imagen {
+    height: var(--alto-imagen-tarjeta);
+}
+
+/* Los 4 colores se repiten en ciclo (la 5ª es como la 1ª, la 6ª como la 2ª) */
+.tarjeta:nth-child(4n + 1) .tarjeta__imagen {
+    background-color: var(--fondo-imagen-1);
+}
+
+.tarjeta:nth-child(4n + 2) .tarjeta__imagen {
+    background-color: var(--fondo-imagen-2);
+}
+
+.tarjeta:nth-child(4n + 3) .tarjeta__imagen {
+    background-color: var(--fondo-imagen-3);
+}
+
+.tarjeta:nth-child(4n + 4) .tarjeta__imagen {
+    background-color: var(--fondo-imagen-4);
+}
+
+.tarjeta__cuerpo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: var(--espacio-3);
+}
+
+.tarjeta__titulo {
+    font-size: var(--texto-l);
+    font-weight: var(--peso-fuerte);
+}
+
+.tarjeta__estilo {
+    margin-bottom: var(--espacio-2);
+    font-size: var(--texto-s);
+    font-weight: var(--peso-fuerte);
+    color: var(--accion-secundaria);
+}
+
+.tarjeta__texto {
+    margin-bottom: var(--espacio-3);
+    font-size: var(--texto-s);
+    color: var(--texto-secundario);
+}
+
+.tarjeta__boton {
+    margin-top: auto;
+}
+
+/* 5. ESCENARIOS
+   GRID: dos columnas iguales (texto | imagen) que cuadran entre bloques.
+   El texto es un FLEX en columna para apilar título, párrafo y botón.
+   En el bloque inverso, order:-1 pone la imagen la primera sin tocar el HTML. */
+.escenarios {
+    padding-block: var(--espacio-6);
+}
+
+.bloque {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: var(--espacio-6);
+    margin-bottom: var(--espacio-5);
+}
+
+.bloque:last-child {
+    margin-bottom: 0;
+}
+
+.bloque__texto {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;   /* el botón no se estira a todo el ancho */
+    justify-content: center;
+    gap: var(--espacio-3);
+}
+
+.bloque__titulo {
+    font-size: var(--texto-xl);
+}
+
+.bloque__texto p {
+    color: var(--texto-secundario);
+}
+
+.bloque__visual {
+    height: var(--alto-visual-bloque);
+    border-radius: var(--radio-m);
+}
+
+/* Extra: cada visual tiene su fondo, sacado de variables */
+.bloque__visual--playa {
+    background-color: var(--fondo-visual-playa);
+}
+
+.bloque__visual--pinar {
+    background-color: var(--fondo-visual-pinar);
+}
+
+.bloque--inverso .bloque__visual {
+    order: -1;
+}
+
+/* 6. ENTRADAS
+   GRID: tres planes con el mismo ancho y alto.
+   Cada plan es un FLEX en columna: la lista con flex:1 se estira y empuja
+   el botón al fondo en los tres planes. La etiqueta usa align-self:flex-start
+   para no estirarse. */
+.entradas {
+    padding-block: var(--espacio-6);
+}
+
+.planes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--espacio-4);
+}
+
+.plan {
+    display: flex;
+    flex-direction: column;
+    padding: var(--espacio-4);
+    border: var(--grosor-borde) solid var(--borde-principal);
+    border-radius: var(--radio-m);
+    background-color: var(--fondo-superficie);
+    transition: border-color var(--transicion), box-shadow var(--transicion);
+}
+
+/* Solo el plan destacado tiene etiqueta. A los otros les dejo ese mismo
+   hueco arriba para que los títulos queden alineados en los tres. */
+.plan:not(.plan--destacado) {
+    padding-top: calc(var(--espacio-4) + var(--alto-etiqueta) + var(--espacio-2));
+}
+
+.plan:hover {
+    border-color: var(--accion-secundaria);
+    box-shadow: var(--sombra-fuerte);
+}
+
+.plan__etiqueta {
+    align-self: flex-start;
+    margin-bottom: var(--espacio-2);
+    padding: 0 var(--espacio-3);
+    border-radius: var(--radio-pildora);
+    font-size: var(--texto-xs);
+    font-weight: var(--peso-fuerte);
+    line-height: var(--alto-etiqueta);
+    color: var(--texto-principal);
+    background-color: var(--accion-principal);
+}
+
+.plan__nombre {
+    font-size: var(--texto-l);
+}
+
+.plan__precio {
+    margin: var(--espacio-2) 0 var(--espacio-3);
+    font-family: var(--fuente-titulo);
+    font-size: var(--texto-2xl);
+    font-weight: var(--peso-negro);
+}
+
+.plan__lista {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--espacio-1);
+    margin-bottom: var(--espacio-4);
+    font-size: var(--texto-s);
+    color: var(--texto-secundario);
+}
+
+.plan__lista li::before {
+    content: "• ";
+}
+
+.plan--destacado {
+    border-color: var(--borde-destacado);
+    color: var(--texto-inverso);
+    background-color: var(--fondo-destacado);
+}
+
+.plan--destacado .plan__precio {
+    color: var(--texto-acento);
+}
+
+.plan--destacado .plan__lista {
+    color: var(--texto-inverso-suave);
+}
+
+/* 7. PIE
+   GRID: 4 columnas con 2fr 1fr 1fr 1fr, así la de marca ocupa el doble.
+   Las listas de enlaces son FLEX en columna para separarlos con gap.
+   La barra legal es FLEX con space-between: un texto a cada lado. */
+.pie {
+    color: var(--texto-inverso-suave);
+    background-color: var(--fondo-pie);
+}
+
+.pie__interior {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: var(--espacio-5);
+    padding-block: var(--espacio-5) var(--espacio-8);
+}
+
+.pie__columna--marca .logo {
+    color: var(--texto-inverso);
+}
+
+.pie__titulo {
+    margin-bottom: var(--espacio-2);
+    font-size: var(--texto-m);
+    color: var(--texto-inverso);
+}
+
+.pie__lista {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espacio-1);
+    font-size: var(--texto-s);
+}
+
+.pie__lista a:hover,
+.pie__legal a:hover {
+    color: var(--texto-acento);
+}
+
+.pie__legal {
+    border-top: var(--grosor-borde) solid var(--borde-pie);
+    font-size: var(--texto-xs);
+}
+
+.pie__legal-interior {
+    display: flex;
+    justify-content: space-between;
+    padding-block: var(--espacio-4);
+}
+
+/* RESPONSIVE */
+
+/* TABLET: hasta 959px */
+@media (max-width: 959px) {
+    /* CABECERA: pasa a dos filas (logo arriba, menú debajo).
+       Ya no es sticky porque al crecer taparía contenido. */
+    html {
+        scroll-padding-top: 0;
+    }
+
+    .cabecera {
+        position: static;
+    }
+
+    .cabecera__interior {
+        flex-direction: column;
+        justify-content: center;
+        gap: var(--espacio-2);
+        padding-block: var(--espacio-3);
+    }
+
+    .menu {
+        flex: none;
+    }
+
+    .menu__lista {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: var(--espacio-3) var(--espacio-4);
+    }
+
+    .menu__lista li:first-child,
+    .menu__lista li:last-child {
+        margin-left: 0;
+    }
+
+    .cartel__rejilla {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .bloque {
+        gap: var(--espacio-4);
+    }
+
+    .pie__interior {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .pie__columna--marca {
+        grid-column: 1 / -1;
+    }
+
+    .pie__lista {
+        overflow-wrap: anywhere;   /* el email largo no desborda */
+    }
+}
+
+/* MÓVIL: hasta 639px */
+@media (max-width: 639px) {
+    :root {
+        --alto-hero: 24rem;
+        --alto-visual-bloque: 12rem;
+    }
+
+    .seccion__titulo {
+        font-size: var(--texto-xl);
+    }
+
+    .hero__acciones {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .datos__lista,
+    .cartel__rejilla,
+    .planes,
+    .pie__interior {
+        grid-template-columns: 1fr;
+    }
+
+    .bloque {
+        grid-template-columns: 1fr;
+        gap: var(--espacio-3);
+    }
+
+    .bloque--inverso .bloque__visual {
+        order: 0;
+    }
+
+    .plan:not(.plan--destacado) {
+        padding-top: var(--espacio-4);
+    }
+
+    .pie__legal-interior {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--espacio-2);
+        text-align: center;
+    }
+}
