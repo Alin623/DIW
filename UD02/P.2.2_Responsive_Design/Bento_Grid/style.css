@@ -1,0 +1,393 @@
+/* ---------- Fuentes (DM Sans, en local) ---------- */
+@font-face {
+  font-family: "DM Sans";
+  src: url("assets/fonts/DMSans-Regular.ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "DM Sans";
+  src: url("assets/fonts/DMSans-Medium.ttf");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "DM Sans";
+  src: url("assets/fonts/DMSans-MediumItalic.ttf");
+  font-weight: 500;
+  font-style: italic;
+}
+
+/* ---------- Variables (style-guide.md) ---------- */
+:root {
+  --purple-100: hsl(254, 88%, 90%);
+  --purple-500: hsl(256, 67%, 59%);
+  --yellow-100: hsl(31, 66%, 93%);
+  --yellow-500: hsl(39, 100%, 71%);
+  --white: hsl(0, 0%, 100%);
+  --black: hsl(0, 0%, 7%);
+  --background: hsl(0, 0%, 96%);
+
+  --title-xl: 64px;
+  --title-lg: 36px;
+  --title-md: 32px;
+}
+
+/* ---------- Base ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  padding: 83px 0 65px;
+  background-color: var(--background);
+  color: var(--black);
+  font-family: "DM Sans", sans-serif;
+  font-size: 18px;
+}
+
+img {
+  display: block;
+}
+
+h1,
+h2 {
+  font-weight: 500;
+  line-height: 0.875;
+  letter-spacing: -0.06em;
+}
+
+p {
+  line-height: 1.1;
+}
+
+em {
+  font-style: italic;
+}
+
+/* ---------- Rejilla de escritorio ---------- */
+.bento {
+  display: grid;
+  gap: 32px;
+  max-width: 1120px;
+  margin: 0 auto;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 324px 59px 156px 246px;
+  grid-template-areas:
+    "create social social schedule"
+    "create manage maintain schedule"
+    "write  manage maintain schedule"
+    "write  stat   grow     grow";
+}
+
+.card {
+  overflow: hidden;
+  padding: 16px;
+  border-radius: 10px;
+}
+
+/* ---------- Tarjetas ---------- */
+.social {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 40px 42px;
+  background-color: var(--purple-500);
+  color: var(--white);
+  text-align: center;
+}
+
+.social h1 {
+  font-size: var(--title-xl);
+}
+
+.social span {
+  color: var(--yellow-500);
+}
+
+.social img {
+  width: 192px;
+  margin: 20px 0 8px;
+}
+
+.manage {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 24px;
+  background-color: var(--white);
+}
+
+.manage img {
+  width: 316px;
+  max-width: 100%;
+}
+
+.manage h2 {
+  margin-top: auto;
+  font-size: var(--title-md);
+}
+
+.maintain {
+  height: auto;
+  padding: 24px;
+  background-color: var(--yellow-500);
+}
+
+.maintain h2 {
+  font-size: var(--title-md);
+}
+
+.maintain img {
+  width: 208px;
+  margin-top: 16px;
+}
+
+.schedule {
+  padding: 48px 32px 32px;
+  background-color: var(--purple-100);
+  text-align: left;
+}
+
+.schedule h2 {
+  font-size: var(--title-md);
+}
+
+.schedule img {
+  width: 100%;
+  margin: 24px 0;
+}
+
+.schedule p {
+  padding: 0;
+}
+
+.grow {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 24px 16px 24px 24px;
+  background-color: var(--purple-500);
+  color: var(--white);
+  text-align: left;
+}
+
+.grow img {
+  width: 228px;
+  flex-shrink: 0;
+  margin: 0;
+}
+
+.grow h2 {
+  max-width: none;
+  margin: 8px 0 0;
+  font-size: 40px;
+  line-height: 0.875;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  background-color: var(--white);
+}
+
+.stat .number {
+  font-size: var(--title-xl);
+  font-weight: 500;
+  line-height: 0.875;
+  letter-spacing: -0.06em;
+}
+
+.stat p:not(.number) {
+  margin-top: 18px;
+}
+
+.stat img {
+  width: 179px;
+  margin-top: auto;
+  padding-top: 22px;
+}
+
+.create {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 32px;
+  background-color: var(--yellow-100);
+}
+
+.create h2 {
+  font-size: var(--title-lg);
+  line-height: 1;
+  letter-spacing: -0.05em;
+}
+
+.create em {
+  color: var(--purple-500);
+}
+
+.create img {
+  width: 191px;
+  margin-top: 24px;
+}
+
+.write {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  background-color: var(--yellow-500);
+}
+
+.write h2 {
+  font-size: var(--title-lg);
+  line-height: 1;
+  letter-spacing: -0.05em;
+}
+
+.write img {
+  width: 220px;
+  margin-top: auto;
+  padding-top: 20px;
+}
+
+.attribution {
+  margin-top: 24px;
+}
+
+/* ---------- Distribución de las tarjetas de escritorio ---------- */
+.social   { grid-area: social; }
+.manage   { grid-area: manage; }
+.maintain { grid-area: maintain; }
+.schedule { grid-area: schedule; }
+.grow     { grid-area: grow; }
+.stat     { grid-area: stat; }
+.create   { grid-area: create; }
+.write    { grid-area: write; }
+
+/* ---------- Ajustes responsive: tablet ---------- */
+@media (max-width: 1199px) {
+  :root {
+    --title-xl: 48px;
+    --title-lg: 32px;
+    --title-md: 26px;
+  }
+
+  body {
+    padding: 32px 16px 40px;
+  }
+
+  h2 {
+    line-height: 0.9;
+  }
+
+  .create h2,
+  .write h2 {
+    line-height: 0.9;
+    letter-spacing: -0.06em;
+  }
+
+  .manage {
+    padding: 16px;
+  }
+
+  .maintain {
+    height: 218px;
+    padding: 16px;
+  }
+
+  .stat p:not(.number) {
+    margin-top: 16px;
+  }
+
+  .create img {
+    margin-top: 20px;
+  }
+
+  .bento {
+    max-width: 850px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: auto;
+    grid-template-areas:
+      "social social"
+      "manage maintain"
+      "schedule schedule"
+      "grow grow"
+      "stat stat"
+      "create write";
+  }
+
+  .schedule {
+    padding: 32px 16px 29px;
+    text-align: center;
+  }
+
+  .schedule img {
+    width: 100%;
+    margin: 24px 0;
+  }
+
+  .schedule p {
+    padding: 0 16px;
+  }
+
+  .grow {
+    display: block;
+    padding: 22px 16px;
+    text-align: center;
+  }
+
+  .grow img {
+    margin: 0 auto 43px;
+  }
+
+  .grow h2 {
+    max-width: 230px;
+    margin: 0 auto;
+    font-size: var(--title-lg);
+  }
+
+  .social {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ---------- Ajustes responsive: móvil ---------- */
+@media (max-width: 767px) {
+  .bento {
+    max-width: 600px;
+    grid-template-columns: 1fr;
+    grid-template-areas: none;
+  }
+
+  .card {
+    grid-area: auto;
+  }
+
+  .manage {
+    gap: 15px;
+  }
+
+  .maintain {
+    height: 218px;
+  }
+
+  .schedule {
+    padding: 32px 16px 29px;
+  }
+
+  .grow {
+    padding: 22px 16px;
+  }
+
+  .stat,
+  .create,
+  .write {
+    grid-column: 1;
+  }
+}
