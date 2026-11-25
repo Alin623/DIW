@@ -1,5 +1,11 @@
 # Pet Haven
 
+- **Autor:** Dumitru Alin Ionescu
+- **Nombre de la práctica:** ionescu_dumitru_alin_diw_p3.2
+- **Asignatura:** Desarrollo de Interfaces Web (DIW)
+
+## Descripción
+
 Sitio responsive de adopción de animales realizado con **HTML semántico, Sass y Vite**. El diseño parte de las pantallas de escritorio y móvil de Figma e incluye una página principal, un catálogo de perros y un formulario de adopción.
 
 ## Páginas
