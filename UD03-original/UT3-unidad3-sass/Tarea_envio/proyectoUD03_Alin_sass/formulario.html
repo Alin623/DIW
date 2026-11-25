@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Tell Pet Haven a little about yourself and the pet you would like to adopt."
+    />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600;700&amp;family=Roboto:wght@400;500;700;900&amp;display=swap"
+      rel="stylesheet"
+    />
+    <title>Adoption enquiry | Pet Haven</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="topbar">
+        <div class="container topbar__inner">
+          <a class="brand" href="./index.html" aria-label="Pet Haven home">
+            <svg class="brand__icon" viewBox="0 0 100 100" aria-hidden="true">
+              <ellipse cx="50" cy="68" rx="22" ry="18" />
+              <ellipse cx="21" cy="44" rx="9" ry="12" transform="rotate(-20 21 44)" />
+              <ellipse cx="40" cy="28" rx="9" ry="13" />
+              <ellipse cx="60" cy="28" rx="9" ry="13" />
+              <ellipse cx="79" cy="44" rx="9" ry="12" transform="rotate(20 79 44)" />
+            </svg>
+            <span class="brand__name">Pet Haven</span>
+          </a>
+          <a class="button button--accent button--small" href="./mascotas.html">Browse pets</a>
+        </div>
+      </div>
+      <nav class="main-nav" aria-label="Main navigation">
+        <div class="container">
+          <ul class="main-nav__list">
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./index.html#about">Our story</a></li>
+            <li><a href="./mascotas.html">Our dogs</a></li>
+            <li><a href="./index.html#process">How it works</a></li>
+            <li><a href="./index.html#contact">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main class="adoption-page" id="main">
+      <section class="section adoption" aria-labelledby="adoption-title">
+        <div class="container adoption__layout">
+          <div class="adoption__intro">
+            <a class="text-link adoption__back" href="./mascotas.html">← Back to our dogs</a>
+            <p class="eyebrow">Every good story starts with a hello</p>
+            <h1 id="adoption-title">Let's find your new best friend.</h1>
+            <p>
+              Tell us a little about yourself and the pet you would like to meet.
+              Our team will be in touch to guide you through the next steps.
+            </p>
+            <figure class="adoption__photo">
+              <img
+                src="./src/assets/stormy.webp"
+                alt="A dog ready to meet its future family"
+                loading="lazy"
+              />
+              <figcaption>We will be with you every step of the way.</figcaption>
+            </figure>
+          </div>
+
+          <form class="adoption-form">
+            <div class="adoption-form__heading">
+              <p class="eyebrow">Adoption enquiry · Step 1 of 1</p>
+              <h2>Tell us about you</h2>
+              <p>All fields marked with * are required.</p>
+            </div>
+
+            <fieldset class="form-group">
+              <legend>Your details</legend>
+              <div class="form-grid">
+                <label class="form-field">
+                  <span class="form-field__label">First name *</span>
+                  <input class="form-field__control" name="firstName" autocomplete="given-name" required />
+                </label>
+                <label class="form-field">
+                  <span class="form-field__label">Last name *</span>
+                  <input class="form-field__control" name="lastName" autocomplete="family-name" required />
+                </label>
+                <label class="form-field">
+                  <span class="form-field__label">Email address *</span>
+                  <input class="form-field__control" name="email" type="email" autocomplete="email" required />
+                </label>
+                <label class="form-field">
+                  <span class="form-field__label">Phone number</span>
+                  <input class="form-field__control" name="phone" type="tel" autocomplete="tel" />
+                </label>
+              </div>
+            </fieldset>
+
+            <fieldset class="form-group">
+              <legend>About your future pet</legend>
+              <div class="form-grid">
+                <label class="form-field">
+                  <span class="form-field__label">Who would you like to meet? *</span>
+                  <select class="form-field__control" id="pet-name" name="pet" required>
+                    <option value="">Choose a pet</option>
+                    <option>Kira</option>
+                    <option>Tor</option>
+                    <option>Luna</option>
+                    <option>Rocky</option>
+                    <option>Toby</option>
+                    <option>Bella</option>
+                    <option>Max</option>
+                    <option>I'm open to suggestions</option>
+                  </select>
+                </label>
+                <label class="form-field">
+                  <span class="form-field__label">Your home *</span>
+                  <select class="form-field__control" name="homeType" required>
+                    <option value="">Select one</option>
+                    <option>House with a garden</option>
+                    <option>House without a garden</option>
+                    <option>Apartment</option>
+                  </select>
+                </label>
+                <label class="form-field form-field--wide">
+                  <span class="form-field__label">What would you like us to know?</span>
+                  <textarea
+                    class="form-field__control form-field__control--textarea"
+                    name="message"
+                    rows="4"
+                    placeholder="Tell us about your experience with pets and your home."
+                  ></textarea>
+                </label>
+              </div>
+            </fieldset>
+
+            <label class="form-check">
+              <input name="privacy" type="checkbox" required />
+              <span>I agree that Pet Haven may contact me about this enquiry. *</span>
+            </label>
+            <button class="button button--accent adoption-form__submit" type="submit">
+              Send my enquiry
+            </button>
+            <p class="form-notice" role="status" aria-live="polite"></p>
+            <p class="adoption-form__note">This is an educational demo. Your information is not sent or stored.</p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer" id="contact">
+      <div class="container footer-grid">
+        <div class="footer-grid__brand">
+          <a class="brand brand--light" href="./index.html">
+            <svg class="brand__icon" viewBox="0 0 100 100" aria-hidden="true">
+              <ellipse cx="50" cy="68" rx="22" ry="18" />
+              <ellipse cx="21" cy="44" rx="9" ry="12" transform="rotate(-20 21 44)" />
+              <ellipse cx="40" cy="28" rx="9" ry="13" />
+              <ellipse cx="60" cy="28" rx="9" ry="13" />
+              <ellipse cx="79" cy="44" rx="9" ry="12" transform="rotate(20 79 44)" />
+            </svg>
+            <span>Pet Haven</span>
+          </a>
+          <p>We connect homeless animals with families waiting for them.</p>
+          <a href="mailto:pets@example.org">pets@example.org</a>
+        </div>
+        <div>
+          <h2 class="footer-grid__title">Explore</h2>
+          <a href="./mascotas.html">Our dogs</a>
+          <a href="./index.html#process">How it works</a>
+          <a href="./index.html#support">Support us</a>
+        </div>
+        <div>
+          <h2 class="footer-grid__title">Community</h2>
+          <a href="./index.html#about">Our story</a>
+          <a href="./index.html#process">Adoption process</a>
+        </div>
+        <div>
+          <h2 class="footer-grid__title">Contact</h2>
+          <p>Street Abedul 12, Toledo<br />+34 623 23 23<br />info@myweb.com</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="container footer-bottom__inner">
+          <p>© 2026 Pet Adoption Shelter</p>
+          <a href="./index.html">Home</a>
+        </div>
+      </div>
+    </footer>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
