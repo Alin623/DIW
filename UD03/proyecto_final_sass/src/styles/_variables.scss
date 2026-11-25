@@ -1,0 +1,43 @@
+$color-primary: #76c3aa;
+$color-primary-light: #dff3ea;
+$color-primary-soft: #edf7f2;
+$color-accent: #ef775e;
+$color-accent-dark: #cf5b43;
+$color-accent-soft: #fff0e9;
+$color-ink: #233d36;
+$color-secondary: #65756f;
+$color-secondary-soft: #e4ece8;
+$color-background: #f8f8f4;
+$color-surface: #fff;
+$color-border: rgb(94 112 136 / 30%);
+
+$font-heading: "Quicksand", "Roboto", system-ui, sans-serif;
+$font-body: "Roboto", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+$text-small: 0.875rem;
+$text-base: 1rem;
+$text-large: 1.125rem;
+$text-hero: clamp(3rem, 6vw, 5.25rem);
+
+$space-1: 0.5rem;
+$space-2: 1rem;
+$space-3: 1.5rem;
+$space-4: 2rem;
+$space-5: 3rem;
+$space-6: 4rem;
+$space-section: clamp(3rem, 7vw, 6rem);
+
+$radius-small: 0.5rem;
+$radius-medium: 1.15rem;
+$radius-large: 1.75rem;
+$radius-pill: 999px;
+
+$shadow-card: 0 1rem 2.5rem rgb(35 61 54 / 12%);
+$container-width: 82rem;
+$transition: 180ms ease;
+
+$pet-card-themes: (
+  "puppy": $color-accent-soft,
+  "adult": $color-primary-soft,
+  "senior": $color-secondary-soft,
+);
