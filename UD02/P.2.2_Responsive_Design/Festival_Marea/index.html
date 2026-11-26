@@ -5,6 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Festival Marea · Layout con Flexbox y Grid</title>
 
+  <script>
+    try {
+      const temaGuardado = localStorage.getItem("tema");
+      if (temaGuardado === "light" || temaGuardado === "dark") {
+        document.documentElement.dataset.theme = temaGuardado;
+      }
+    } catch (error) {
+      console.warn("No se pudo recuperar el tema guardado.", error);
+    }
+  </script>
+
   <!-- 1º las variables y el reset, 2º vuestros estilos -->
   <link rel="stylesheet" href="variables.css">
   <link rel="stylesheet" href="estilos.css">
@@ -27,6 +38,9 @@
           </li>
         </ul>
       </nav>
+      <button class="boton boton--tema" id="tema" type="button" aria-pressed="false">
+        Modo oscuro
+      </button>
     </div>
   </header>
 
@@ -272,5 +286,39 @@
     </div>
   </footer>
 
+  <script>
+    const root = document.documentElement;
+    const botonTema = document.getElementById("tema");
+    const preferenciaSistema = matchMedia("(prefers-color-scheme: dark)");
+
+    function temaActual() {
+      return root.dataset.theme ||
+        (preferenciaSistema.matches ? "dark" : "light");
+    }
+
+    function actualizarBotonTema() {
+      const estaOscuro = temaActual() === "dark";
+      botonTema.textContent = estaOscuro ? "Modo claro" : "Modo oscuro";
+      botonTema.setAttribute("aria-pressed", String(estaOscuro));
+    }
+
+    actualizarBotonTema();
+
+    preferenciaSistema.addEventListener("change", () => {
+      if (!root.dataset.theme) actualizarBotonTema();
+    });
+
+    botonTema.addEventListener("click", () => {
+      const nuevoTema = temaActual() === "dark" ? "light" : "dark";
+      root.dataset.theme = nuevoTema;
+      actualizarBotonTema();
+
+      try {
+        localStorage.setItem("tema", nuevoTema);
+      } catch (error) {
+        console.warn("No se pudo guardar el tema seleccionado.", error);
+      }
+    });
+  </script>
 </body>
 </html>
