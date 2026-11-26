@@ -4,6 +4,8 @@
    algunas medidas mías. Fuera de este bloque no uso las primitivas. */
    
 :root {
+    color-scheme: light dark;
+
     /* fondos */
     --fondo-pagina: var(--color-fondo);
     --fondo-superficie: var(--color-superficie);
@@ -49,6 +51,59 @@
     --grosor-borde: 1px;
     --ancho-foco: 3px;
     --separacion-foco: 2px;
+}
+
+/* El sistema elige el tema si no hay una preferencia manual. */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        color-scheme: dark;
+        --fondo-pagina: #101827;
+        --fondo-superficie: #1c2a3e;
+        --fondo-hero: #101827;
+        --fondo-destacado: #1c2a3e;
+        --fondo-pie: #101827;
+
+        --texto-principal: #e8eef5;
+        --texto-secundario: #b8c5d6;
+        --texto-inverso: #f2f6f7;
+        --texto-inverso-suave: #c9d3e6;
+        --texto-acento: #fcbf49;
+        --texto-boton-principal: #14213d;
+
+        --accion-oscura: #3a4b67;
+        --accion-oscura-hover: #526481;
+
+        --borde-principal: #43526a;
+        --borde-contorno: #c9d3e6;
+        --borde-pie: #43526a;
+    }
+}
+
+:root[data-theme="dark"] {
+    color-scheme: dark;
+    --fondo-pagina: #101827;
+    --fondo-superficie: #1c2a3e;
+    --fondo-hero: #101827;
+    --fondo-destacado: #1c2a3e;
+    --fondo-pie: #101827;
+
+    --texto-principal: #e8eef5;
+    --texto-secundario: #b8c5d6;
+    --texto-inverso: #f2f6f7;
+    --texto-inverso-suave: #c9d3e6;
+    --texto-acento: #fcbf49;
+    --texto-boton-principal: #14213d;
+
+    --accion-oscura: #3a4b67;
+    --accion-oscura-hover: #526481;
+
+    --borde-principal: #43526a;
+    --borde-contorno: #c9d3e6;
+    --borde-pie: #43526a;
+}
+
+:root[data-theme="light"] {
+    color-scheme: light;
 }
 
 /* BASE */
@@ -101,7 +156,7 @@ main {
 }
 
 .boton--sol {
-    color: var(--texto-principal);
+    color: var(--texto-boton-principal, var(--texto-principal));
     background-color: var(--accion-principal);
 }
 
@@ -137,6 +192,17 @@ main {
 .boton--borde:hover {
     color: var(--texto-principal);
     background-color: var(--accion-contorno-hover);
+}
+
+.boton--tema {
+    flex-shrink: 0;
+    color: var(--texto-principal);
+    background-color: var(--fondo-superficie);
+    border-color: var(--borde-principal);
+}
+
+.boton--tema:hover {
+    background-color: var(--fondo-pagina);
 }
 
 /* FOCO: todos los enlaces muestran un contorno al navegar con Tab.
